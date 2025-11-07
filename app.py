@@ -4,7 +4,6 @@ import pickle
 import numpy as np
 import folium
 from streamlit_folium import st_folium
-from sklearn.ensemble import RandomForestRegressor
 
 # Configuración de la página
 st.set_page_config(
@@ -21,7 +20,7 @@ st.markdown("#### Ingresá los detalles de la propiedad para obtener una estimac
 @st.cache_resource
 def load_model():
     try:
-        with open('randomforest.pkl', 'rb') as f:
+        with open('random_forest_model.pkl') as f:
             model = pickle.load(f)
         return model
     except FileNotFoundError:
