@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 import folium
 from streamlit_folium import st_folium
-import xgboost as xgb
+from sklearn.ensemble import RandomForestRegressor
 
 # Configuración de la página
 st.set_page_config(
@@ -21,7 +21,7 @@ st.markdown("#### Ingresá los detalles de la propiedad para obtener una estimac
 @st.cache_resource
 def load_model():
     try:
-        with open('xgboost_model.pkl', 'rb') as f:
+        with open('randomforest.pkl', 'rb') as f:
             model = pickle.load(f)
         return model
     except FileNotFoundError:
@@ -174,12 +174,10 @@ if st.button("Calcular Precio Estimado", type="primary", use_container_width=Tru
             
 
         })
-        
-        input_data = xgb.DMatrix(input_data)
 
         # Hacer la predicción
         try:
-            prediction = abs(model.predict(input_data)[0])
+            prediction = model.predict(input_data)[0]
             
             # Mostrar resultado
             st.success("✅ Predicción completada")

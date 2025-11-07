@@ -3,4 +3,4 @@ pandas
 numpy
 folium
 streamlit_folium
-xgboost==1.7.6
+sklearn.ensemble
