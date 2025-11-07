@@ -3,5 +3,4 @@ pandas
 numpy
 folium
 streamlit_folium
-xgboost
-pickle
+xgboost==1.7.6
