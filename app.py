@@ -8,14 +8,14 @@ import xgboost as xgb
 
 # Configuración de la página
 st.set_page_config(
-    page_title="Predictor de Precios",
+    page_title="Predictor de precios",
     page_icon="🏠",
     layout="centered"
 )
 
 # Título y descripción
 st.title("Predictor de precios de propiedades")
-st.markdown("####Ingresá los detalles de la propiedad para obtener una estimación precisa del precio")
+st.markdown("#### Ingresá los detalles de la propiedad para obtener una estimación precisa del precio")
 
 # Cargar el modelo
 @st.cache_resource
@@ -179,7 +179,7 @@ if st.button("Calcular Precio Estimado", type="primary", use_container_width=Tru
 
         # Hacer la predicción
         try:
-            prediction = model.predict(input_data)[0]
+            prediction = abs(model.predict(input_data)[0])
             
             # Mostrar resultado
             st.success("✅ Predicción completada")
